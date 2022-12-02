@@ -30,6 +30,24 @@ defmodule Day1 do
                         end
                 end)
         end
+
+        def parse_elves_eff_2(content) do
+                # acc = [3,2,1]
+                # Input: 8
+                # acc = [8,3,2]
+                # Input: 7
+                # acc = [8,7,3]
+
+                Enum.reduce(content, [0, 0, 0], fn(line, acc) ->
+                        sum = Day1.parse_elf(line)
+                        cond do
+                                sum > Enum.at(acc, 0) -> [sum, Enum.at(acc, 0), Enum.at(acc, 1)]
+                                sum > Enum.at(acc, 1) -> [Enum.at(acc, 0), sum, Enum.at(acc, 1)]
+                                sum > Enum.at(acc, 2) -> [Enum.at(acc, 0), Enum.at(acc, 1), sum]
+                                true -> acc
+                        end
+                end)
+        end
 end
 
 # Part 1
@@ -62,3 +80,10 @@ IO.inspect("Part 2")
 |> Enum.sum()
 |> IO.inspect()
 # Correct: 206104
+
+'./input.txt'
+|> Day1.read_file()
+|> Day1.parse_content()
+|> Day1.parse_elves_eff_2()
+|> Enum.sum()
+|> IO.inspect()
