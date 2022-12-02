@@ -87,3 +87,4 @@ IO.inspect("Part 2")
 |> Day1.parse_elves_eff_2()
 |> Enum.sum()
 |> IO.inspect()
+# Correct: 206104
