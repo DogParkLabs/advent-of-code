@@ -27,4 +27,6 @@ end
 |> Day1.read_file()
 |> Day1.parse_content()
 |> Day1.parse_elves()
+|> Enum.max()
 |> IO.inspect()
+# Correct: 69310
