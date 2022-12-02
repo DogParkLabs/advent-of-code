@@ -61,3 +61,4 @@ IO.inspect("Part 2")
 |> Enum.take(3)
 |> Enum.sum()
 |> IO.inspect()
+# Correct: 206104
