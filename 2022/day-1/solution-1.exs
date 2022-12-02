@@ -19,6 +19,17 @@ defmodule Day1 do
                 |> Enum.map(&String.to_integer/1)
                 |> Enum.sum()
         end
+
+        def parse_elves_eff(content) do
+                Enum.reduce(content, 0, fn (line, acc) ->
+                        sum = Day1.parse_elf(line) 
+                        if (sum > acc) do
+                                sum
+                        else
+                                acc
+                        end
+                end)
+        end
 end
 
 # IO.inspect(Day1.parse_content(Day1.read_file('./input.txt')))
@@ -28,5 +39,12 @@ end
 |> Day1.parse_content()
 |> Day1.parse_elves()
 |> Enum.max()
+|> IO.inspect()
+# Correct: 69310
+
+'./input.txt'
+|> Day1.read_file()
+|> Day1.parse_content()
+|> Day1.parse_elves_eff()
 |> IO.inspect()
 # Correct: 69310
