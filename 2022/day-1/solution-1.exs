@@ -3,6 +3,15 @@ defmodule Day1 do
                 {:ok, content} = File.read(file_name)
                 content
         end
+
+        def parse_content(content) do
+                String.split(content, "\n\n")
+        end
 end
 
-IO.inspect(Day1.read_file('./input.txt'))
+# IO.inspect(Day1.parse_content(Day1.read_file('./input.txt')))
+# or
+'./input.txt'
+|> Day1.read_file()
+|> Day1.parse_content()
+|> IO.inspect()
