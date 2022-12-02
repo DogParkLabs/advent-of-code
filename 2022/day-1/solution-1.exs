@@ -32,6 +32,8 @@ defmodule Day1 do
         end
 end
 
+# Part 1
+IO.inspect("Part 1")
 # IO.inspect(Day1.parse_content(Day1.read_file('./input.txt')))
 # or
 './input.txt'
@@ -48,3 +50,14 @@ end
 |> Day1.parse_elves_eff()
 |> IO.inspect()
 # Correct: 69310
+
+# Part 2
+IO.inspect("Part 2")
+'./input.txt'
+|> Day1.read_file()
+|> Day1.parse_content()
+|> Day1.parse_elves()
+|> Enum.sort(:desc)
+|> Enum.take(3)
+|> Enum.sum()
+|> IO.inspect()
