@@ -97,9 +97,10 @@ const getNextTailPosition = ({ head, tail }) => {
 const head = { x: 0, y: 0 };
 const start = { x: 0, y: 0 };
 let tail = { x: 0, y: 0 };
-const tailsVisitedCordinates = [];
+const tailsVisitedCordinates = new Set();
 
-const input = parseInput("./example-1.txt");
+// const input = parseInput("./example-1.txt"); // Answer: 13
+const input = parseInput("./input.txt"); // Answer: 6498
 
 for (let { dir, steps } of input) {
   //   console.log({ dir, steps });
@@ -109,6 +110,7 @@ for (let { dir, steps } of input) {
       Array.from({ length: steps }).forEach(() => {
         head.x += 1;
         tail = getNextTailPosition({ head, tail });
+        tailsVisitedCordinates.add(`${tail.x},${tail.y}`);
         console.log({ head, tail });
       });
 
@@ -117,6 +119,7 @@ for (let { dir, steps } of input) {
       Array.from({ length: steps }).forEach(() => {
         head.x -= 1;
         tail = getNextTailPosition({ head, tail });
+        tailsVisitedCordinates.add(`${tail.x},${tail.y}`);
         console.log({ head, tail });
       });
       break;
@@ -124,6 +127,7 @@ for (let { dir, steps } of input) {
       Array.from({ length: steps }).forEach(() => {
         head.y += 1;
         tail = getNextTailPosition({ head, tail });
+        tailsVisitedCordinates.add(`${tail.x},${tail.y}`);
         console.log({ head, tail });
       });
       break;
@@ -131,6 +135,7 @@ for (let { dir, steps } of input) {
       Array.from({ length: steps }).forEach(() => {
         head.y -= 1;
         tail = getNextTailPosition({ head, tail });
+        tailsVisitedCordinates.add(`${tail.x},${tail.y}`);
         console.log({ head, tail });
       });
       break;
@@ -140,6 +145,8 @@ for (let { dir, steps } of input) {
 }
 
 console.log(input);
+console.log(tailsVisitedCordinates);
+console.log(tailsVisitedCordinates.size);
 
 // const tempTail = { x: 3, y: 3 };
 // const tempHead = { x: 1, y: 2 };
