@@ -96,29 +96,43 @@ const getNextTailPosition = ({ head, tail }) => {
 
 const head = { x: 0, y: 0 };
 const start = { x: 0, y: 0 };
-const tail = { x: 0, y: 0 };
+let tail = { x: 0, y: 0 };
 const tailsVisitedCordinates = [];
 
 const input = parseInput("./example-1.txt");
 
 for (let { dir, steps } of input) {
-  console.log({ dir, steps });
+  //   console.log({ dir, steps });
   // 1. Determin if we add or subtract to x or y cooridnate
   switch (dir) {
     case "R":
-      // 1. Move head
-      // 1. Check if Tail is next to head
-      // 1. If not next to Head, move Tail
-      //       for (let i of steps) {
-      //         currentHeadPoint.x += 1;
-      //         Math.abs();
-      //       }
+      Array.from({ length: steps }).forEach(() => {
+        head.x += 1;
+        tail = getNextTailPosition({ head, tail });
+        console.log({ head, tail });
+      });
+
       break;
     case "L":
+      Array.from({ length: steps }).forEach(() => {
+        head.x -= 1;
+        tail = getNextTailPosition({ head, tail });
+        console.log({ head, tail });
+      });
       break;
     case "U":
+      Array.from({ length: steps }).forEach(() => {
+        head.y += 1;
+        tail = getNextTailPosition({ head, tail });
+        console.log({ head, tail });
+      });
       break;
     case "D":
+      Array.from({ length: steps }).forEach(() => {
+        head.y -= 1;
+        tail = getNextTailPosition({ head, tail });
+        console.log({ head, tail });
+      });
       break;
     default:
       throw new Error(`Invalid Direction: ${dir}`);
@@ -127,7 +141,7 @@ for (let { dir, steps } of input) {
 
 console.log(input);
 
-const tempTail = { x: 3, y: 3 };
-const tempHead = { x: 1, y: 2 };
-const temp = getNextTailPosition({ tail: tempTail, head: tempHead });
-console.log(temp);
+// const tempTail = { x: 3, y: 3 };
+// const tempHead = { x: 1, y: 2 };
+// const temp = getNextTailPosition({ tail: tempTail, head: tempHead });
+// console.log(temp);
