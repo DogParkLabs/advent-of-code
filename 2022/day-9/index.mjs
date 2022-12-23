@@ -8,4 +8,15 @@ const parseInput = (path) => {
   return data;
 };
 
-console.log(parseInput("./example-1.txt"));
+const tailsVisitedCordinates = [];
+const startingPoint = { x: 0, y: 0 };
+const currentTailPoint = { x: 0, y: 0 };
+const currentHeadPoint = { x: 0, y: 0 };
+
+const input = parseInput("./example-1.txt");
+
+for (let { dir, steps } of input) {
+  console.log({ dir, steps });
+}
+
+// console.log(input);
